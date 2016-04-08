@@ -3,6 +3,9 @@ Projeto 3 da diciplina de Desenvolvimento Colaborativo Ágil do professor Marcel
 
 
 André Toyama
+
 Gabriela Almeida
+
 Lucas Astur
+
 Pedro Cunial
