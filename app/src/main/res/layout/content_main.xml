@@ -14,11 +14,10 @@
     tools:showIn="@layout/activity_main">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:textSize="16sp"
-        android:text="Me aperte!"
+        android:text="Me aperte"
         android:id="@+id/botaoEnviar"/>
 
 </LinearLayout>
