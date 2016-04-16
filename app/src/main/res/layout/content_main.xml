@@ -13,33 +13,12 @@
     tools:context="br.edu.insper.whatsmorse.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="32sp"
-        android:text="Ana Maria Braga"/>
-
-    <EditText
-        android:id="@+id/campo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:hint="Digite algo, seu burro"
-        android:inputType="textWebPassword"/>
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="center"
         android:textSize="16sp"
-        android:text="SUBMETA-SE A MIM"
+        android:text="Me aperte!"
         android:id="@+id/botaoEnviar"/>
 
 </LinearLayout>
