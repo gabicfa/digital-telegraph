@@ -29,10 +29,21 @@ public class MainActivity extends AppCompatActivity {
         botaoEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Parabéns, você apertou o botão", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Parabéns, você fez um ponto", Toast.LENGTH_LONG).show();
 
             }
         });
+
+        assert botaoEnviar != null;
+        botaoEnviar.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(MainActivity.this, "Parabéns, você fez um traço", Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
+
+
 
     }
 }
