@@ -19,8 +19,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    int aperto;
-    List<Integer> x =  new ArrayList<Integer>();
+    boolean aperto;
+    public static List<Boolean> listaDeApertos = new ArrayList<Boolean>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,24 +33,29 @@ public class MainActivity extends AppCompatActivity {
         Button botaoEnviar = (Button) findViewById(R.id.botaoEnviar);
 
         assert botaoEnviar != null;
-
         botaoEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Parabéns, você fez um ponto", Toast.LENGTH_LONG).show();
-                aperto = 1;
-                System.out.print(aperto);
+                aperto= false;
+                listaDeApertos.add(aperto);
+                System.out.println(listaDeApertos);
             }
         });
 
+        assert botaoEnviar != null;
         botaoEnviar.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 Toast.makeText(MainActivity.this, "Parabéns, você fez um traço", Toast.LENGTH_LONG).show();
-                aperto= 2;
-                System.out.print(aperto);
+                aperto= true;
+                listaDeApertos.add(aperto);
+                System.out.println(listaDeApertos);
                 return true;
             }
         });
+
+
+
     }
 }
