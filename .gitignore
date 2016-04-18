@@ -20,3 +20,5 @@
 .idea/gradle.xml
 
 .idea/.name
+
+*.xml
