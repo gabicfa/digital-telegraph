@@ -40,10 +40,12 @@ public class MainActivity extends AppCompatActivity {
 
             public void onFinish() {
                 Toast.makeText(MainActivity.this, "Parabéns, você fez um espaco", Toast.LENGTH_LONG).show();
+
                 for(int i = listaDeApertos.size(); i < 5; ++i){
                     listaDeApertos.add(null);
-                    System.out.println(listaDeApertos);
                 }
+
+                System.out.println(listaDeApertos);
                 listaDeApertos.clear();
                 }
         }.start();
