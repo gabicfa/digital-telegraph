@@ -49,7 +49,7 @@ public class NodeFactory {
         nodes[11].setLetra('d');
         nodes[11].setLeft(nodes[22]);
         nodes[11].setRight(nodes[23]);
-        
+
 
     }
 }
