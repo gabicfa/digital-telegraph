@@ -5,23 +5,38 @@ package br.edu.insper.whatsmorse.model;
  */
 public class Node {
     private char letra;
-    private boolean[] subChars = [2]
+//    private boolean[] subChars;
+    private Node left;
+    private Node right;
 
-    public Node(char letra) {
+    public Node() {
+//        this.subChars = subChars;
+//        this.letra = letra;
+        this.left = null;
+        this.right = null;
+    }
+
+    public void setLetra(char letra) {
         this.letra = letra;
     }
 
-    public void setSubChars(boolean firstChar, boolean secondChar) {
-        this.subChars[0] = firstChar;
-        this.subChars[1] = secondChar;
+    public char getLetra() {
+        return this.letra;
     }
 
-    public char getLetra(boolean[] currentInput) {
-        if(currentInput == null) {
-            return this.letra;
-        }
+    public void setLeft(Node left) {
+        this.left = left;
+    }
 
-        boolean currentChar = currentInput[-1];
+    public void setRight(Node right) {
+        this.right = right;
+    }
 
+    public Node getLeft() {
+        return this.left;
+    }
+
+    public Node getRight() {
+        return this.right;
     }
 }
