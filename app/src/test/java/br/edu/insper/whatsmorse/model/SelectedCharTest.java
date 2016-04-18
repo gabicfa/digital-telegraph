@@ -11,45 +11,45 @@ public class SelectedCharTest {
 
     @Test
     public void charIsE() {
-        Node Node = new Node();
-        Node.setValues(false, null);
-        char letra = Node.getValue();
+        SelectedChar selectedChar = new SelectedChar();
+        selectedChar.setValues(false, null);
+        char letra = selectedChar.getValue();
 
         assertEquals(letra, 'e');
     }
 
     @Test
     public void charIsN() {
-        Node Node = new Node();
-        Node.setValues(true, false, null);
-        char letra = Node.getValue();
+        SelectedChar selectedChar = new SelectedChar();
+        selectedChar.setValues(true, false, null);
+        char letra = selectedChar.getValue();
 
         assertEquals(letra, 'n');
     }
 
     @Test
     public void charIsR() {
-        Node Node = new Node();
-        Node.setValues(false, true, false, null);
-        char letra = Node.getValue();
+        SelectedChar selectedChar = new SelectedChar();
+        selectedChar.setValues(false, true, false, null);
+        char letra = selectedChar.getValue();
 
         assertEquals(letra, 'r');
     }
 
     @Test
     public void charIsH() {
-        Node Node = new Node();
-        Node.setValues(false, false, false, false, null);
-        char letra = Node.getValue();
+        SelectedChar selectedChar = new SelectedChar();
+        selectedChar.setValues(false, false, false, false, null);
+        char letra = selectedChar.getValue();
 
         assertEquals(letra, 'r');
     }
 
     @Test
     public void charIs9() {
-        Node Node = new Node();
-        Node.setValues(true, true, true, true, false, null);
-        char letra = Node.getValue();
+        SelectedChar selectedChar = new SelectedChar();
+        selectedChar.setValues(true, true, true, true, false, null);
+        char letra = selectedChar.getValue();
 
         assertEquals(letra, '9');
     }

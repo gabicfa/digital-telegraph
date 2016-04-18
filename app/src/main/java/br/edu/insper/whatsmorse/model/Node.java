@@ -5,13 +5,10 @@ package br.edu.insper.whatsmorse.model;
  */
 public class Node {
     private char letra;
-//    private boolean[] subChars;
     private Node left;
     private Node right;
 
     public Node() {
-//        this.subChars = subChars;
-        this.letra = letra;
         this.left = null;
         this.right = null;
     }
