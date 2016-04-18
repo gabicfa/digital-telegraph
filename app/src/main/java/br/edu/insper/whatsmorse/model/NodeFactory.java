@@ -49,7 +49,17 @@ public class NodeFactory {
         nodes[11].setLetra('d');
         nodes[11].setLeft(nodes[22]);
         nodes[11].setRight(nodes[23]);
-
-
+        nodes[12].setLetra('k');
+        nodes[12].setLeft(nodes[24]);
+        nodes[12].setRight(nodes[25]);
+        nodes[13].setLetra('g');
+        nodes[13].setLeft(nodes[26]);
+        nodes[13].setRight(nodes[27]);
+        nodes[14].setLetra('o');
+        nodes[14].setLeft(nodes[28]);
+        nodes[14].setRight(nodes[29]);
+        nodes[15].setLetra('h');
+        nodes[15].setLeft(nodes[30]);
+        nodes[15].setRight(nodes[31]);
     }
 }
