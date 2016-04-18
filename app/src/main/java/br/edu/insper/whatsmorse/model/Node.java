@@ -11,17 +11,17 @@ public class Node {
 
     public Node() {
 //        this.subChars = subChars;
-//        this.letra = letra;
+        this.letra = letra;
         this.left = null;
         this.right = null;
     }
 
-    public void setLetra(char letra) {
-        this.letra = letra;
-    }
-
     public char getLetra() {
         return this.letra;
+    }
+
+    public void setLetra(char letra) {
+        this.letra = letra;
     }
 
     public void setLeft(Node left) {
