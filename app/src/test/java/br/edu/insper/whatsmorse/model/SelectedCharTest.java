@@ -1,13 +1,13 @@
-package br.edu.insper.whatsmorse;
+package br.edu.insper.whatsmorse.model;
 
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- * To work on unit tests, switch the Test Artifact in the Build Variants view.
+ * Created by Pedro Cunial on 4/18/16.
  */
-public class ExampleUnitTest {
+public class SelectedCharTest {
 
     @Test
     public void charIsE() {
@@ -54,8 +54,6 @@ public class ExampleUnitTest {
         assertEquals(letra, '9');
     }
 
-//    @Test
-//    public void addition_isCorrect() throws Exception {
-//        assertEquals(4, 2 + 2);
-//    }
+
+
 }
