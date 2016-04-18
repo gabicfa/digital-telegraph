@@ -34,17 +34,17 @@ public class MainActivity extends AppCompatActivity {
 
         assert botaoEnviar != null;
 
-        final CountDownTimer remainingTimeCounter = new CountDownTimer(3000, 1000) {
+        final CountDownTimer remainingTimeCounter = new CountDownTimer(2000, 1000) {
             public void onTick(long millisUntilFinished) {
             }
 
             public void onFinish() {
                 Toast.makeText(MainActivity.this, "Parabéns, você fez um espaco", Toast.LENGTH_LONG).show();
-                    for(int i = listaDeApertos.size(); i < 5; ++i){
-                        listaDeApertos.add(null);
-                        System.out.println(listaDeApertos);
-                    }
-
+                for(int i = listaDeApertos.size(); i < 5; ++i){
+                    listaDeApertos.add(null);
+                    System.out.println(listaDeApertos);
+                }
+                listaDeApertos.clear();
                 }
         }.start();
 
