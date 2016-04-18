@@ -80,6 +80,15 @@ public class NodeFactory {
         nodes[28].setLeft(nodes[37]);
         nodes[29].setLeft(nodes[38]);
         nodes[29].setRight(nodes[39]);
-
+        nodes[30].setLetra('5');
+        nodes[31].setLetra('4');
+        nodes[32].setLetra('3');
+        nodes[33].setLetra('2');
+        nodes[34].setLetra('1');
+        nodes[35].setLetra('6');
+        nodes[36].setLetra('7');
+        nodes[37].setLetra('8');
+        nodes[38].setLetra('9');
+        nodes[39].setLetra('0');
     }
 }
