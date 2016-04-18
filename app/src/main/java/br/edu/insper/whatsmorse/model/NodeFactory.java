@@ -5,7 +5,7 @@ package br.edu.insper.whatsmorse.model;
  * Created by Pedro Cunial on 4/18/16.
  */
 public class NodeFactory {
-    private static final int NUM_NODES = 40;
+    private static final int NUM_NODES = 39;
 
     public NodeFactory() {
         Node[] nodes = new Node[NUM_NODES];
@@ -40,7 +40,7 @@ public class NodeFactory {
         nodes[7].setRight(nodes[16]);
         nodes[8].setLetra('u');
         nodes[8].setLeft(nodes[17]);
-        nodes[8].setRight(nodes[18]); // espaço
+        nodes[8].setRight(nodes[18]); // espaço vazio
         nodes[9].setLetra('r');
         nodes[9].setLeft(nodes[19]);
         nodes[10].setLetra('w');
@@ -61,5 +61,14 @@ public class NodeFactory {
         nodes[15].setLetra('h');
         nodes[15].setLeft(nodes[30]);
         nodes[15].setRight(nodes[31]);
+        nodes[16].setLetra('v');
+        nodes[16].setRight(nodes[32]);
+        nodes[17].setLetra('f');
+        nodes[18].setRight(nodes[33]);
+        nodes[19].setLetra('l');
+        nodes[20].setLetra('p');
+        nodes[21].setLetra('j');
+        nodes[21].setRight(nodes[34]);
+
     }
 }
