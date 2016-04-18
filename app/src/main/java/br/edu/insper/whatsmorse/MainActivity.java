@@ -33,13 +33,19 @@ public class MainActivity extends AppCompatActivity {
         Button botaoEnviar = (Button) findViewById(R.id.botaoEnviar);
 
         assert botaoEnviar != null;
-        final CountDownTimer remainingTimeCounter = new CountDownTimer(30000, 1000) {
+
+        final CountDownTimer remainingTimeCounter = new CountDownTimer(3000, 1000) {
             public void onTick(long millisUntilFinished) {
             }
 
             public void onFinish() {
-                Log.d("Counter", "Finished");
-            }
+                Toast.makeText(MainActivity.this, "Parabéns, você fez um espaco", Toast.LENGTH_LONG).show();
+                    for(int i = listaDeApertos.size(); i < 5; ++i){
+                        listaDeApertos.add(null);
+                        System.out.println(listaDeApertos);
+                    }
+
+                }
         }.start();
 
         botaoEnviar.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 aperto= false;
                 listaDeApertos.add(aperto);
                 System.out.println(listaDeApertos);
-                System.out.println(remainingTimeCounter);
                 remainingTimeCounter.cancel();
                 remainingTimeCounter.start();
             }
@@ -64,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 aperto = true;
                 listaDeApertos.add(aperto);
                 System.out.println(listaDeApertos);
-                System.out.println(remainingTimeCounter);
                 remainingTimeCounter.cancel();
                 remainingTimeCounter.start();
                 return true;
