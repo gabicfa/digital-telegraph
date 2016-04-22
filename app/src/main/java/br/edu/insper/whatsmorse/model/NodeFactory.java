@@ -6,15 +6,15 @@ package br.edu.insper.whatsmorse.model;
  */
 public class NodeFactory {
     private static final int NUM_NODES = 39;
+    Node[] nodes;
 
     public NodeFactory() {
-        Node[] nodes = new Node[NUM_NODES];
+        nodes = new Node[NUM_NODES];
         for (int i = 0; i < NUM_NODES; i++) {
             nodes[i] = new Node();
         }
 
         // Constroi a árvore
-        nodes[0].setLetra(' ');
         nodes[0].setLeft(nodes[1]);
         nodes[0].setRight(nodes[2]);
         nodes[1].setLetra('e');
@@ -90,5 +90,9 @@ public class NodeFactory {
         nodes[37].setLetra('8');
         nodes[38].setLetra('9');
         nodes[39].setLetra('0');
+    }
+
+    public Node[] getNodes() {
+        return nodes;
     }
 }

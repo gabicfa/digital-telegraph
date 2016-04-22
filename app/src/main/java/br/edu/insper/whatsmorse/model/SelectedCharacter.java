@@ -5,10 +5,30 @@ package br.edu.insper.whatsmorse.model;
  */
 public class SelectedCharacter {
     private Node node;
+    private Node[] allNodes;
+    private NodeFactory nodeFactory;
 
     public SelectedCharacter() {
-        this.node = new Node();
+        this.nodeFactory = new NodeFactory();
+        this.allNodes = nodeFactory.getNodes();
+        this.node = allNodes[0];
 
+    }
+
+    public void setNode(boolean[] instruction) {
+        for(boolean inst : instruction) {
+            if(inst) {
+                this.node = this.node.getRight();
+            } else if(! inst) {
+                this.node = this.node.getLeft();
+            } else {
+                System.out.println("Erro");
+            }
+        }
+    }
+
+    public char getValue(){
+        return this.node.getLetra();
     }
 
 }
