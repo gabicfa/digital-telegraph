@@ -1,5 +1,8 @@
 package br.edu.insper.whatsmorse.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Pedro Cunial on 4/18/16.
  */
@@ -15,7 +18,7 @@ public class SelectedCharacter {
 
     }
 
-    public void setNode(boolean[] instruction) {
+    public void setNode(List<Boolean> instruction) {
         for(boolean inst : instruction) {
             if(inst) {
                 this.node = this.node.getRight();

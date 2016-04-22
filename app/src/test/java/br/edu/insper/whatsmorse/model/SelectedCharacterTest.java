@@ -2,6 +2,9 @@ package br.edu.insper.whatsmorse.model;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -11,7 +14,9 @@ public class SelectedCharacterTest {
 
     @Test
     public void charIsE() {
-        boolean[] instruction = {false};
+        List<Boolean> instruction = new ArrayList<Boolean>();
+        instruction.add(false);
+
         SelectedCharacter selectedChar = new SelectedCharacter();
         selectedChar.setNode(instruction);
         char letra = selectedChar.getValue();
@@ -21,7 +26,10 @@ public class SelectedCharacterTest {
 
     @Test
     public void charIsN() {
-        boolean[] instruction = {true, false};
+        List<Boolean> instruction = new ArrayList<Boolean>();
+        instruction.add(true);
+        instruction.add(false);
+
         SelectedCharacter selectedChar = new SelectedCharacter();
         selectedChar.setNode(instruction);
         char letra = selectedChar.getValue();
@@ -31,7 +39,11 @@ public class SelectedCharacterTest {
 
     @Test
     public void charIsR() {
-        boolean[] instruction = {false, true, false};
+        List<Boolean> instruction = new ArrayList<Boolean>();
+        instruction.add(false);
+        instruction.add(true);
+        instruction.add(false);
+
         SelectedCharacter selectedChar = new SelectedCharacter();
         selectedChar.setNode(instruction);
         char letra = selectedChar.getValue();
@@ -41,7 +53,12 @@ public class SelectedCharacterTest {
 
     @Test
     public void charIsH() {
-        boolean[] instruction = {false, false, false, false};
+        List<Boolean> instruction = new ArrayList<Boolean>();
+        instruction.add(false);
+        instruction.add(false);
+        instruction.add(false);
+        instruction.add(false);
+
         SelectedCharacter selectedChar = new SelectedCharacter();
         selectedChar.setNode(instruction);
         char letra = selectedChar.getValue();
@@ -51,7 +68,13 @@ public class SelectedCharacterTest {
 
     @Test
     public void charIs9() {
-        boolean[] instruction = {true, true, true, true, false};
+        List<Boolean> instruction = new ArrayList<Boolean>();
+        instruction.add(true);
+        instruction.add(true);
+        instruction.add(true);
+        instruction.add(true);
+        instruction.add(false);
+
         SelectedCharacter selectedChar = new SelectedCharacter();
         selectedChar.setNode(instruction);
         char letra = selectedChar.getValue();
