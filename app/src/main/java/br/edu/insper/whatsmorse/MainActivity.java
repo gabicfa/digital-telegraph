@@ -39,12 +39,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                Toast.makeText(MainActivity.this, "Parabéns, você fez um espaco", Toast.LENGTH_LONG).show();
-
-                for(int i = listaDeApertos.size(); i < 5; ++i){
-                    listaDeApertos.add(null);
-                }
-
+                Toast.makeText(MainActivity.this, "Parabéns, você fez um espaco", Toast.LENGTH_SHORT).show();
                 System.out.println(listaDeApertos);
                 listaDeApertos.clear();
                 }
@@ -53,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
         botaoEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Parabéns, você fez um ponto", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Parabéns, você fez um ponto", Toast.LENGTH_SHORT).show();
                 aperto= false;
-                listaDeApertos.add(aperto);
+                if (listaDeApertos.size()<5){
+                    listaDeApertos.add(aperto);
+                }
                 System.out.println(listaDeApertos);
                 remainingTimeCounter.cancel();
                 remainingTimeCounter.start();
@@ -67,15 +64,18 @@ public class MainActivity extends AppCompatActivity {
         botaoEnviar.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(MainActivity.this, "Parabéns, você fez um traço", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Parabéns, você fez um traço", Toast.LENGTH_SHORT).show();
                 aperto = true;
-                listaDeApertos.add(aperto);
+                if (listaDeApertos.size()<5){
+                    listaDeApertos.add(aperto);
+                }
                 System.out.println(listaDeApertos);
                 remainingTimeCounter.cancel();
                 remainingTimeCounter.start();
                 return true;
             }
         });
+
 
 
 
