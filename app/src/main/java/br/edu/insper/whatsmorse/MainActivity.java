@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
-        final CountDownTimer remainingTimeCounter = new CountDownTimer(2000, 1000) {
+        final CountDownTimer mudancaDeLetra = new CountDownTimer(2000, 1000) {
             public void onTick(long millisUntilFinished) {
             }
 
@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
                     listaDeApertos.add(aperto);
                 }
                 System.out.println(listaDeApertos);
-                remainingTimeCounter.cancel();
-                remainingTimeCounter.start();
+                mudancaDeLetra.cancel();
+                mudancaDeLetra.start();
                 espaco.cancel();
                 espaco.start();
             }
@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
                     listaDeApertos.add(aperto);
                 }
                 System.out.println(listaDeApertos);
-                remainingTimeCounter.cancel();
-                    remainingTimeCounter.start();
+                mudancaDeLetra.cancel();
+                mudancaDeLetra.start();
                 espaco.cancel();
                 espaco.start();
                 return true;
