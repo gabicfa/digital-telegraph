@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button botaoEnviar = (Button) findViewById(R.id.botaoEnviar);
+        Button botaoToque = (Button) findViewById(R.id.botaoToque);
         this.mensagem = (TextView) findViewById(R.id.textView);
 
-        assert botaoEnviar != null;
+        assert botaoToque != null;
 
         final CountDownTimer espaco = new CountDownTimer(4000, 1000) {
             @Override
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
-        botaoEnviar.setOnClickListener(new View.OnClickListener() {
+        botaoToque.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 aperto= false;
@@ -86,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        assert botaoEnviar != null;
+        assert botaoToque != null;
 
-        botaoEnviar.setOnLongClickListener(new View.OnLongClickListener() {
+        botaoToque.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 aperto = true;

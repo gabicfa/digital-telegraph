@@ -13,16 +13,6 @@
     tools:context="br.edu.insper.whatsmorse.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <!--
-
-    <TextView
-        android:id="@+id/txtView"
-        android:textSize="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="16dp"
-        android:text="mensagem" />
-              -->
-
 
     <TextView
         android:id="@+id/textView"
@@ -32,15 +22,17 @@
         android:textColor="#000000"
         android:text="Mensagem" />
 
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Toque para escrever"
-        android:id="@+id/botaoEnviar"/>
+        android:id="@+id/botaoToque"/>
 
-
-
-
+    <Button android:id="@+id/botaoEnviar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Enviar"/>
 
 
 </LinearLayout>
