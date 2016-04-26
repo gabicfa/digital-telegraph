@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     boolean aperto;
     public static List<Boolean> listaDeApertos = new ArrayList<Boolean>();
-    private TextView mensagem;
+    private EditText mensagem;
     private String frase = "";
 
     @Override
@@ -36,9 +37,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Button botaoToque = (Button) findViewById(R.id.botaoToque);
-        this.mensagem = (TextView) findViewById(R.id.textView);
+        Button botaoBack = (Button) findViewById(R.id.botaoBackSpace);
+        this.mensagem = (EditText) findViewById(R.id.editText);
 
         assert botaoToque != null;
+        assert botaoBack != null;
+
 
         final CountDownTimer espaco = new CountDownTimer(4000, 1000) {
             @Override
@@ -47,11 +51,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                frase += " ";
+
+                if (frase != ""){
+                    frase += " ";
+                    mensagem.setText(frase);
+                    mensagem.setSelection(mensagem.getText().length());
+                }
+
             }
+
         }.start();
 
-        final CountDownTimer mudancaDeLetra = new CountDownTimer(2000, 1000) {
+        final CountDownTimer mudancaDeLetra = new CountDownTimer(1500, 1000) {
             public void onTick(long millisUntilFinished) {
             }
 
@@ -66,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     frase += letra;
                     System.out.println(frase);
                     mensagem.setText(frase);
+                    mensagem.setSelection(mensagem.getText().length());
                     listaDeApertos.clear();
                 }
             }
@@ -101,6 +113,21 @@ public class MainActivity extends AppCompatActivity {
                 espaco.cancel();
                 espaco.start();
                 return true;
+            }
+        });
+
+        botaoBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (frase != ""){
+                    frase = frase.substring(0, frase.length()-1);
+                    mensagem.setText(frase);
+                    mensagem.setSelection(mensagem.getText().length());
+                    mudancaDeLetra.cancel();
+                    mudancaDeLetra.start();
+                    espaco.cancel();
+                    espaco.start();
+                }
             }
         });
 
