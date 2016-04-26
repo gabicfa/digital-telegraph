@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         assert botaoToque != null;
 
-        final CountDownTimer espaco = new CountDownTimer(4000, 1000) {
+        final CountDownTimer espaco = new CountDownTimer(2000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
             }
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
-        final CountDownTimer mudancaDeLetra = new CountDownTimer(2000, 1000) {
+        final CountDownTimer mudancaDeLetra = new CountDownTimer(1000, 1000) {
             public void onTick(long millisUntilFinished) {
             }
 
