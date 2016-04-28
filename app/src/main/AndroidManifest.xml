@@ -20,4 +20,8 @@
         </activity>
     </application>
 
+    <!-- Precisamos desta permissão para enviar torpedos. -->
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+
+
 </manifest>
