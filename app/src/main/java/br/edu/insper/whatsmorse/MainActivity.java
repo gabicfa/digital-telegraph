@@ -146,8 +146,12 @@ public class MainActivity extends AppCompatActivity {
                 SmsManager manager = SmsManager.getDefault();
                 String phone = "996003399";
                 if(PhoneNumberUtils.isWellFormedSmsAddress(phone)) {
-                    manager.sendTextMessage(phone, null, frase, null, null);
-                    Toast.makeText(MainActivity.this, "Torpedo enviado!", Toast.LENGTH_SHORT).show();
+                    if(frase != "") {
+                        manager.sendTextMessage(phone, null, frase, null, null);
+                        Toast.makeText(MainActivity.this, "Torpedo enviado!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "Mensagem vazia, impossível enviar", Toast.LENGTH_LONG).show();
+                    }
                 }
                 else {
                     Toast.makeText(MainActivity.this, "Número inválido!", Toast.LENGTH_SHORT).show();
