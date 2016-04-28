@@ -1,6 +1,8 @@
 package br.edu.insper.whatsmorse;
 
 import android.Manifest;
+import android.app.ActionBar;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -10,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +21,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import android.support.v7.app.AppCompatActivity;
 
 import br.edu.insper.whatsmorse.model.SelectedCharacter;
 
@@ -26,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public static List<Boolean> listaDeApertos = new ArrayList<Boolean>();
     private EditText mensagem;
     private String frase = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
         assert botaoToque != null;
         assert botaoBack != null;
-
 
         final CountDownTimer espaco = new CountDownTimer(3000, 1000) {
             @Override
@@ -144,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Código básico para utilizar envio de torpedos internamente.
                 SmsManager manager = SmsManager.getDefault();
-                String phone = "996003399";
+                String phone = "976006696";
                 if(PhoneNumberUtils.isWellFormedSmsAddress(phone)) {
                     if(frase != "") {
                         manager.sendTextMessage(phone, null, frase, null, null);
@@ -156,9 +162,18 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     Toast.makeText(MainActivity.this, "Número inválido!", Toast.LENGTH_SHORT).show();
                 }
+                startActivity(new Intent(MainActivity.this, NurseActivity.class));
             }
         });
 
 
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }
