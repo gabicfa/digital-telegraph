@@ -31,6 +31,8 @@ import android.support.v7.app.AppCompatActivity;
 import br.edu.insper.whatsmorse.model.SelectedCharacter;
 
 public class MainActivity extends AppCompatActivity {
+    // PC - Precisamos mudar a frase para ser tratada como um atributo
+    //      (só falta isso para enviar para lista de contatos
 
     boolean aperto;
     public static List<Boolean> listaDeApertos = new ArrayList<Boolean>();
@@ -153,20 +155,6 @@ public class MainActivity extends AppCompatActivity {
         botaoEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Código básico para utilizar envio de torpedos internamente.
-                SmsManager manager = SmsManager.getDefault();
-                String phone = "976006696";
-                if(PhoneNumberUtils.isWellFormedSmsAddress(phone)) {
-                    if(frase != "") {
-                        manager.sendTextMessage(phone, null, frase, null, null);
-                        Toast.makeText(MainActivity.this, "Torpedo enviado!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(MainActivity.this, "Mensagem vazia, impossível enviar", Toast.LENGTH_LONG).show();
-                    }
-                }
-                else {
-                    Toast.makeText(MainActivity.this, "Número inválido!", Toast.LENGTH_SHORT).show();
-                }
                 startActivity(new Intent(MainActivity.this, SendActivity.class));
             }
         });
@@ -192,5 +180,9 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    public String getFrase() {
+        return this.frase;
     }
 }

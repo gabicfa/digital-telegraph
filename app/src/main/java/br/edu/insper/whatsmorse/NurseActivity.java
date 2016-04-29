@@ -18,9 +18,12 @@ public class NurseActivity extends AppCompatActivity {
 
         // PC - Criei uma list view para colocar os valores
         //      correspondentes às letras
+
         String[] charCodes = {"a", "b", "c"};
+
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, charCodes);
+
         ListView charList = (ListView) findViewById(R.id.listView);
 
         assert charList != null;
