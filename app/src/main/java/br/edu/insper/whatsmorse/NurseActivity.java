@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class NurseActivity extends AppCompatActivity {
 
@@ -13,6 +15,16 @@ public class NurseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
+
+        // PC - Criei uma list view para colocar os valores
+        //      correspondentes às letras
+        String[] charCodes = {"a", "b", "c"};
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, charCodes);
+        ListView charList = (ListView) findViewById(R.id.listView);
+
+        assert charList != null;
+        charList.setAdapter(myAdapter);
     }
 
     @Override
