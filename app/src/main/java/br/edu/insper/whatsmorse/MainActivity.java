@@ -1,9 +1,11 @@
 package br.edu.insper.whatsmorse;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.ActivityCompat;
@@ -14,6 +16,7 @@ import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +24,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import android.support.v7.app.AppCompatActivity;
 
@@ -130,12 +134,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         botaoBack.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                if (frase != "") {
+                if (!Objects.equals(frase, "")) {
                     frase = frase.substring(0, frase.length() - 1);
                     mensagem.setText(frase);
-                    mensagem.setSelection(mensagem.getText().length());
+                    mensagem.setSelection(mensagem.getText().length());       // Para o cursor seguir a mensagem
                     mudancaDeLetra.cancel();
                     mudancaDeLetra.start();
                     espaco.cancel();
@@ -162,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     Toast.makeText(MainActivity.this, "Número inválido!", Toast.LENGTH_SHORT).show();
                 }
-                startActivity(new Intent(MainActivity.this, NurseActivity.class));
+                startActivity(new Intent(MainActivity.this, SendActivity.class));
             }
         });
 
@@ -175,5 +180,17 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_nurse:
+                startActivity(new Intent(MainActivity.this, NurseActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 }

@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NurseActivity"></activity>
+        <activity android:name=".NurseActivity" />
+        <activity android:name=".SendActivity"></activity>
     </application>
 
 </manifest>
