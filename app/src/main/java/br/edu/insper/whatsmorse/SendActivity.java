@@ -29,7 +29,7 @@ public class SendActivity extends AppCompatActivity {
     private ListView contactList;
     private ArrayAdapter<String> adapter;
 
-
+    // PC - TODO: Adicionar a opção do usuario entrar com um telefone em código morse para envio
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +45,15 @@ public class SendActivity extends AppCompatActivity {
 
         // PC - Precisamos pegar a frase, que fora enviada junto
         //      com a invocação desta activity
-
         frase = getIntent().getStringExtra("frase");
         System.out.println("dog " + frase);
 
 
         // PC - Criação de uma list view com  para trabalharmos
         //      com os "contatos favoritos"
-
+        //      NÃO PRECISAMOS MANTER OS NOMES DESTA LISTA, mas é
+        //      bom manter pelo menos o meu nome e contato para na
+        //      apresentação o usuário ver a mensagem chegando
         final String[] contacts = {"Pedro Cunial", "Matheus Dias", "Gabi Almeida"};
 
         adapter = new ArrayAdapter<String>(this,

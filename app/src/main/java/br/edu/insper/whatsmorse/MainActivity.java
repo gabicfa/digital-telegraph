@@ -152,7 +152,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // PC - Precisamos enviar o valor de "frase" e depois zerá-lo
                 //      para quando o usuário voltar não ter mais mensagem no campo
+                //      TODO: Fazer com que o campo não "reset" somente ao clicar em enviar e sim ao tentar enviar uma mensagem à um contato ou telefone por conta de possíveis erros
+
                 startActivity(new Intent(MainActivity.this, SendActivity.class).putExtra("frase",frase));
+                // PC - TODO: Provavelmente a solução do TODO anterior está ligada com o envio pelo "putExtra"
+
                 frase = "";
                 mensagem.setText(frase);
             }

@@ -18,6 +18,7 @@ public class NurseActivity extends AppCompatActivity {
 
         // PC - Criei uma list view para colocar os valores
         //      correspondentes às letras
+        //      TODO: Completar esta lísta (ou montar outra estrutura de dados conforme achar necessário) utilizando a árvore para criar a "cola do ajudante"
 
         String[] charCodes = {"a", "b", "c"};
 
