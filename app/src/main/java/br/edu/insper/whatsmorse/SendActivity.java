@@ -13,6 +13,7 @@ import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -116,5 +117,17 @@ public class SendActivity extends AppCompatActivity {
         // PC - Muda de volta para a main activity (digitar), no entando a reconstroi
         //      (de modo que "resete" seus campos)
         startActivity(new Intent(SendActivity.this, MainActivity.class));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_numero:
+                startActivity(new Intent(SendActivity.this, NumberEntryActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 }

@@ -2,5 +2,5 @@
     <string name="app_name">WhatsMorse</string>
     <string name="action_nurse">Ajudante</string>
     <string name="action_user">Morse</string>
-    <string name="action_favoritos">Favoritos</string>
+    <string name="action_favoritos">Digitar Número</string>
 </resources>

@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".NurseActivity" />
-        <activity android:name=".SendActivity"></activity>
+        <activity android:name=".SendActivity" />
+        <activity android:name=".NumberEntryActivity"></activity>
     </application>
 
 </manifest>

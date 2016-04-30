@@ -13,14 +13,14 @@
     tools:context="br.edu.insper.whatsmorse.MainActivity"
     tools:showIn="@layout/activity_main">
 
-        <EditText
-            android:id="@+id/editText"
-            android:textSize="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:cursorVisible="true"
-            android:textColor="#000000"
-            android:text="Mensagem" />
+    <EditText
+        android:id="@+id/editText"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cursorVisible="true"
+        android:textColor="#000000"
+        android:text="Mensagem" />
 
 
 
