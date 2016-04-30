@@ -155,10 +155,12 @@ public class MainActivity extends AppCompatActivity {
         botaoEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SendActivity.class));
+                // PC - Precisamos enviar o valor de "frase"
+                startActivity(new Intent(MainActivity.this, SendActivity.class).putExtra("frase",frase));
+                System.out.println(frase);
+//                startActivity(new Intent(MainActivity.this, SendActivity.class));
             }
         });
-
 
 
     }
