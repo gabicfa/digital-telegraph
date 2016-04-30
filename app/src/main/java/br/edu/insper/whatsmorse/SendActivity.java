@@ -2,6 +2,7 @@ package br.edu.insper.whatsmorse;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
@@ -111,5 +112,9 @@ public class SendActivity extends AppCompatActivity {
         else {
             Toast.makeText(SendActivity.this, "Número inválido!", Toast.LENGTH_SHORT).show();
         }
+
+        // PC - Muda de volta para a main activity (digitar), no entando a reconstroi
+        //      (de modo que "resete" seus campos)
+        startActivity(new Intent(SendActivity.this, MainActivity.class));
     }
 }
