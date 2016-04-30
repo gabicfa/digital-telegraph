@@ -53,12 +53,6 @@ public class MainActivity extends AppCompatActivity {
         Button botaoEnviar = (Button) findViewById(R.id.botaoEnviar);
         this.mensagem = (EditText) findViewById(R.id.editText);
 
-        // Código básico para utilizar o novo modelo de permissões do Android.
-        int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
-        if(permission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 0);
-        }
-
         assert botaoToque != null;
         assert botaoBack != null;
 
@@ -67,10 +61,11 @@ public class MainActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
             }
 
+            @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
             public void onFinish() {
 
-                if (frase != ""){
+                if (!Objects.equals(frase, "")){
                     frase += " ";
                     mensagem.setText(frase);
                     mensagem.setSelection(mensagem.getText().length());
@@ -155,10 +150,11 @@ public class MainActivity extends AppCompatActivity {
         botaoEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // PC - Precisamos enviar o valor de "frase"
+                // PC - Precisamos enviar o valor de "frase" e depois zerá-lo
+                //      para quando o usuário voltar não ter mais mensagem no campo
                 startActivity(new Intent(MainActivity.this, SendActivity.class).putExtra("frase",frase));
-                System.out.println(frase);
-//                startActivity(new Intent(MainActivity.this, SendActivity.class));
+                frase = "";
+                mensagem.setText(frase);
             }
         });
 
@@ -182,9 +178,5 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
-    }
-
-    public String getFrase() {
-        return this.frase;
     }
 }

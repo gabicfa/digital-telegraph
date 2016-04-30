@@ -100,7 +100,7 @@ public class SendActivity extends AppCompatActivity {
         SmsManager manager = SmsManager.getDefault();
 
         if(PhoneNumberUtils.isWellFormedSmsAddress(phone)) {
-            if(!Objects.equals("", this.frase)) {
+            if(!Objects.equals("", this.frase) && this.frase != null) {
                 manager.sendTextMessage(phone, null, this.frase, null, null);
                 Toast.makeText(SendActivity.this, "Torpedo enviado!", Toast.LENGTH_SHORT).show();
             } else {
