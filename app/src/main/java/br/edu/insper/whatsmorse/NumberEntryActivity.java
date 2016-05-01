@@ -17,9 +17,10 @@ import br.edu.insper.whatsmorse.model.SelectedCharacter;
 
 public class NumberEntryActivity extends AppCompatActivity {
     private String telefone = "";
-    boolean aperto;
+    private boolean aperto;
     private EditText editTextNumero;
-    public static List<Boolean> listaDeApertos = new ArrayList<Boolean>();
+    private static List<Boolean> listaDeApertos = new ArrayList<Boolean>();
+    private String frase = "";
 
 
 
@@ -27,6 +28,9 @@ public class NumberEntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_entry);
+
+        frase = getIntent().getStringExtra("frase");
+        System.out.println("catdog " + frase);
 
         Button botaoEnviar = (Button) findViewById(R.id.botao_enviar_numero);
         Button botaoBackspace = (Button) findViewById(R.id.botao_backspace_numero);
