@@ -1,13 +1,22 @@
 package br.edu.insper.whatsmorse;
 
+import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.CountDownTimer;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.PhoneNumberUtils;
+import android.telephony.SmsManager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +25,7 @@ import java.util.Objects;
 import br.edu.insper.whatsmorse.model.SelectedCharacter;
 
 public class NumberEntryActivity extends AppCompatActivity {
+    private String frase = "";
     private String telefone = "";
     boolean aperto;
     private EditText editTextNumero;
@@ -27,6 +37,12 @@ public class NumberEntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_entry);
+
+        int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 0);
+        }
+
 
         Button botaoEnviar = (Button) findViewById(R.id.botao_enviar_numero);
         Button botaoBackspace = (Button) findViewById(R.id.botao_backspace_numero);
@@ -63,8 +79,8 @@ public class NumberEntryActivity extends AppCompatActivity {
         botaoNumero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                aperto= false;
-                if (listaDeApertos.size()<5){
+                aperto = false;
+                if (listaDeApertos.size() < 5) {
                     listaDeApertos.add(aperto);
                 }
                 System.out.println(listaDeApertos);
@@ -77,7 +93,7 @@ public class NumberEntryActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 aperto = true;
-                if (listaDeApertos.size()<5){
+                if (listaDeApertos.size() < 5) {
                     listaDeApertos.add(aperto);
                 }
                 System.out.println(listaDeApertos);
@@ -86,6 +102,8 @@ public class NumberEntryActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
 
         botaoBackspace.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.KITKAT)
@@ -101,7 +119,29 @@ public class NumberEntryActivity extends AppCompatActivity {
             }
         });
 
+        frase = getIntent().getStringExtra("frase");
+        System.out.println("dog " + frase);
+
+        botaoEnviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("Frase à ser enviada: " + frase);
+                SmsManager manager = SmsManager.getDefault();
+
+                if (PhoneNumberUtils.isWellFormedSmsAddress(telefone)) {
+                    if (!Objects.equals("", frase) && frase != null) {
+                        manager.sendTextMessage(telefone, null, frase, null, null);
+                        Toast.makeText(NumberEntryActivity.this, "Torpedo enviado!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(NumberEntryActivity.this, "Mensagem vazia, impossível enviar", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(NumberEntryActivity.this, "Número inválido!", Toast.LENGTH_SHORT).show();
+                }
+
+                startActivity(new Intent(NumberEntryActivity.this, MainActivity.class));
+            }
+
+        });
     }
-
-
 }

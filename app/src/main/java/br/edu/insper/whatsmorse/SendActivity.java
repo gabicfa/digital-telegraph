@@ -19,6 +19,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,7 +29,6 @@ public class SendActivity extends AppCompatActivity {
     // PC - Eviar mensagem para um telefone qualquer
     private MainActivity mainActivity = new MainActivity();
     private String frase = "";
-    private String telefone="";
     private ListView contactList;
     private ArrayAdapter<String> adapter;
 
@@ -50,9 +50,6 @@ public class SendActivity extends AppCompatActivity {
         //      com a invocação desta activity
         frase = getIntent().getStringExtra("frase");
         System.out.println("dog " + frase);
-        telefone = getIntent().getStringExtra("telefone");
-        System.out.println("cat" + telefone);
-
 
         // PC - Criação de uma list view com  para trabalharmos
         //      com os "contatos favoritos"
