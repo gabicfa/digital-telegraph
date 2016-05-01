@@ -123,7 +123,7 @@ public class SendActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_numero:
-                startActivity(new Intent(SendActivity.this, NumberEntryActivity.class));
+                startActivity(new Intent(SendActivity.this, NumberEntryActivity.class).putExtra("frase",frase));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

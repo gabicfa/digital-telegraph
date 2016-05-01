@@ -25,11 +25,11 @@ import java.util.Objects;
 import br.edu.insper.whatsmorse.model.SelectedCharacter;
 
 public class NumberEntryActivity extends AppCompatActivity {
-    private String frase = "";
     private String telefone = "";
-    boolean aperto;
+    private boolean aperto;
     private EditText editTextNumero;
-    public static List<Boolean> listaDeApertos = new ArrayList<Boolean>();
+    private static List<Boolean> listaDeApertos = new ArrayList<Boolean>();
+    private String frase = "";
 
 
 
@@ -42,6 +42,9 @@ public class NumberEntryActivity extends AppCompatActivity {
         if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 0);
         }
+
+        frase = getIntent().getStringExtra("frase");
+        System.out.println("catdog " + frase);
 
 
         Button botaoEnviar = (Button) findViewById(R.id.botao_enviar_numero);
@@ -125,23 +128,36 @@ public class NumberEntryActivity extends AppCompatActivity {
         botaoEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Frase à ser enviada: " + frase);
-                SmsManager manager = SmsManager.getDefault();
-
-                if (PhoneNumberUtils.isWellFormedSmsAddress(telefone)) {
-                    if (!Objects.equals("", frase) && frase != null) {
-                        manager.sendTextMessage(telefone, null, frase, null, null);
-                        Toast.makeText(NumberEntryActivity.this, "Torpedo enviado!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(NumberEntryActivity.this, "Mensagem vazia, impossível enviar", Toast.LENGTH_LONG).show();
-                    }
-                } else {
+                if (telefone.length() >= 9){
+                    ligar(telefone);
+                }
+                else{
                     Toast.makeText(NumberEntryActivity.this, "Número inválido!", Toast.LENGTH_SHORT).show();
                 }
 
-                startActivity(new Intent(NumberEntryActivity.this, MainActivity.class));
-            }
+
+        }
 
         });
+    }
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    public void ligar(String phone) {
+        System.out.println("Frase à ser enviada: " + this.frase);
+        SmsManager manager = SmsManager.getDefault();
+
+        if(PhoneNumberUtils.isWellFormedSmsAddress(phone)) {
+            if(!Objects.equals("", this.frase) && this.frase != null) {
+                manager.sendTextMessage(phone, null, this.frase, null, null);
+                Toast.makeText(NumberEntryActivity.this, "Torpedo enviado!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(NumberEntryActivity.this, "Mensagem vazia, impossível enviar", Toast.LENGTH_LONG).show();
+            }
+        }
+        else {
+            Toast.makeText(NumberEntryActivity.this, "Número inválido!", Toast.LENGTH_SHORT).show();
+        }
+
+        startActivity(new Intent(NumberEntryActivity.this, MainActivity.class));
     }
 }
