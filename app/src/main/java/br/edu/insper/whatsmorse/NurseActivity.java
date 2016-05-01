@@ -27,13 +27,17 @@ public class NurseActivity extends AppCompatActivity {
 
         // PC - Criei uma list view para colocar os valores
         //      correspondentes às letras
-        //      TODO: Completar esta lísta (ou montar outra estrutura de dados conforme achar necessário) utilizando a árvore para criar a "cola do ajudante"
 
-        //  PC - Pegamos valor à valor dos chars na lista dos nós
+        // PC - Pegamos valor à valor dos chars na lista dos nós
         nodeFactory = new NodeFactory();
         nodes = nodeFactory.getNodes();
 
         List<String> charCodes =  new ArrayList<>();
+
+        // PC - Devemos criar uma pilha de nós, assim como uma pilha
+        //      de chars (que devem conter o valor correspondente ao
+        //      código destes nós. Com isso, varremos o array de nós
+        //      que já temos, criando a lista final de nós e seus valores
 
         Stack<Node> stack = new Stack<Node>();
         Stack<Character> value = new Stack<>();
@@ -43,6 +47,7 @@ public class NurseActivity extends AppCompatActivity {
 
         // PC - Realizamos a busca dos valores
         while (!stack.empty()) {
+            // PC - Para simplificar a utilização deste valor
             Node node = stack.peek();
 
             if (node.getLeft() != null) {
@@ -58,7 +63,11 @@ public class NurseActivity extends AppCompatActivity {
                 stack.push(node2);
 
             } else {
-
+                // PC - Se entramos neste else é porque já varremos
+                //      todos os possíveis nós filhos e, portanto,
+                //      devemos retornar o valor da letra e do codigo
+                //      deste nó para o usuário
+                
                 if(node.getLetra() != 0) {
                     String charAndItsCode = node.getLetra() + ":";
                     for(char character : value) {
