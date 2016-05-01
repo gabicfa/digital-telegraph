@@ -67,7 +67,7 @@ public class NurseActivity extends AppCompatActivity {
                 //      todos os possíveis nós filhos e, portanto,
                 //      devemos retornar o valor da letra e do codigo
                 //      deste nó para o usuário
-                
+
                 if(node.getLetra() != 0) {
                     String charAndItsCode = node.getLetra() + ":";
                     for(char character : value) {
