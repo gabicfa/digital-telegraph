@@ -3,14 +3,17 @@ package br.edu.insper.whatsmorse.model;
 /**
  * Created by Pedro Cunial on 4/18/16.
  */
+
 public class Node {
     private char letra;
     private Node left;
     private Node right;
+    private int passes;
 
     public Node() {
         this.left = null;
         this.right = null;
+        this.passes = 0;
     }
 
     public char getLetra() {
@@ -35,5 +38,13 @@ public class Node {
 
     public Node getRight() {
         return this.right;
+    }
+
+    public int getPasses() {
+        return this.passes;
+    }
+
+    public void incrementPasses() {
+        this.passes ++;
     }
 }

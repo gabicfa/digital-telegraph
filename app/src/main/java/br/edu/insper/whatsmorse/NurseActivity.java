@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import br.edu.insper.whatsmorse.model.*;
 
@@ -31,12 +32,29 @@ public class NurseActivity extends AppCompatActivity {
         nodeFactory = new NodeFactory();
         nodes = nodeFactory.getNodes();
         List<Character> charCodes =  new ArrayList<>();
+        Stack<Node> stack = new Stack<Node>();
+        stack.push(nodes[0]);
 
         for(Node node : nodes) {
             if(node.getLetra() != 0) {
                 charCodes.add(node.getLetra());
             }
         }
+
+        Stack<Character> value = new Stack<>();
+
+        while(!stack.empty()) {
+            if(stack.peek().getPasses() == 0) {
+                stack.peek().incrementPasses();
+                value.push('.');
+
+
+
+
+            }
+        }
+
+
 
 //        String[] charCodes = {"a", "b", "c"};
 
