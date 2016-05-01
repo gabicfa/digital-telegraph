@@ -5,14 +5,16 @@ import android.os.Build;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import android.widget.Toast;
+import android.content.Intent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+import android.telephony.PhoneNumberUtils;
 import br.edu.insper.whatsmorse.model.SelectedCharacter;
 
 public class NumberEntryActivity extends AppCompatActivity {
@@ -67,8 +69,8 @@ public class NumberEntryActivity extends AppCompatActivity {
         botaoNumero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                aperto= false;
-                if (listaDeApertos.size()<5){
+                aperto = false;
+                if (listaDeApertos.size() < 5) {
                     listaDeApertos.add(aperto);
                 }
                 System.out.println(listaDeApertos);
@@ -81,7 +83,7 @@ public class NumberEntryActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 aperto = true;
-                if (listaDeApertos.size()<5){
+                if (listaDeApertos.size() < 5) {
                     listaDeApertos.add(aperto);
                 }
                 System.out.println(listaDeApertos);
@@ -90,6 +92,8 @@ public class NumberEntryActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
 
         botaoBackspace.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.KITKAT)
@@ -105,7 +109,40 @@ public class NumberEntryActivity extends AppCompatActivity {
             }
         });
 
+        frase = getIntent().getStringExtra("frase");
+        System.out.println("dog " + frase);
+
+        botaoEnviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (telefone.length() >= 9){
+                    ligar(telefone);
+                }
+                else{
+                    Toast.makeText(NumberEntryActivity.this, "Número inválido!", Toast.LENGTH_SHORT).show();
+                }
+        }
+
+        });
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    public void ligar(String phone) {
+        System.out.println("Frase à ser enviada: " + this.frase);
+        SmsManager manager = SmsManager.getDefault();
 
+        if(PhoneNumberUtils.isWellFormedSmsAddress(phone)) {
+            if(!Objects.equals("", this.frase) && this.frase != null) {
+                manager.sendTextMessage(phone, null, this.frase, null, null);
+                Toast.makeText(NumberEntryActivity.this, "Torpedo enviado!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(NumberEntryActivity.this, "Mensagem vazia, impossível enviar", Toast.LENGTH_LONG).show();
+            }
+        }
+        else {
+            Toast.makeText(NumberEntryActivity.this, "Número inválido!", Toast.LENGTH_SHORT).show();
+        }
+
+        startActivity(new Intent(NumberEntryActivity.this, MainActivity.class));
+    }
 }

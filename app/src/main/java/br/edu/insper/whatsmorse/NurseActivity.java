@@ -11,7 +11,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Stack;
+=======
+>>>>>>> afe7484e8c6f397996fca63e5aeac552a986926e
 
 import br.edu.insper.whatsmorse.model.*;
 
@@ -53,7 +56,6 @@ public class NurseActivity extends AppCompatActivity {
 
             }
         }
-
 
 
 //        String[] charCodes = {"a", "b", "c"};
