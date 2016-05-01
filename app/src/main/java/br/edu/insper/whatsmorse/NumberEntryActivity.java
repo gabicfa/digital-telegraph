@@ -121,8 +121,6 @@ public class NumberEntryActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(NumberEntryActivity.this, "Número inválido!", Toast.LENGTH_SHORT).show();
                 }
-
-
         }
 
         });
