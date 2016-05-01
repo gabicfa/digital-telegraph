@@ -32,33 +32,52 @@ public class NurseActivity extends AppCompatActivity {
         //  PC - Pegamos valor à valor dos chars na lista dos nós
         nodeFactory = new NodeFactory();
         nodes = nodeFactory.getNodes();
-        List<Character> charCodes =  new ArrayList<>();
+
+        List<String> charCodes =  new ArrayList<>();
+
         Stack<Node> stack = new Stack<Node>();
-        stack.push(nodes[0]);
-
-        for(Node node : nodes) {
-            if(node.getLetra() != 0) {
-                charCodes.add(node.getLetra());
-            }
-        }
-
         Stack<Character> value = new Stack<>();
 
-        while(!stack.empty()) {
-            if(stack.peek().getPasses() == 0) {
-                stack.peek().incrementPasses();
+        stack.push(nodes[0]);
+        value.push(' ');
+
+        // PC - Realizamos a busca dos valores
+        while (!stack.empty()) {
+            Node node = stack.peek();
+
+            if (node.getLeft() != null) {
                 value.push('.');
+                Node node2 = node.getLeft();
+                node.setLeft(null);
+                stack.push(node2);
 
+            } else if (node.getRight() != null) {
+                value.push('-');
+                Node node2 = node.getRight();
+                node.setRight(null);
+                stack.push(node2);
 
+            } else {
 
-
+                if(node.getLetra() != 0) {
+                    String charAndItsCode = node.getLetra() + ":";
+                    for(char character : value) {
+                        charAndItsCode += character;
+                        charAndItsCode += ' ';
+                    }
+                    charCodes.add(charAndItsCode);
+                }
+                stack.pop();
+                value.pop();
             }
         }
+
+
 
 
 //        String[] charCodes = {"a", "b", "c"};
 
-        ArrayAdapter<Character> myAdapter = new ArrayAdapter<Character>(this, android.R.layout.simple_list_item_1, charCodes);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, charCodes);
 
         ListView charList = (ListView) findViewById(R.id.listView);
 

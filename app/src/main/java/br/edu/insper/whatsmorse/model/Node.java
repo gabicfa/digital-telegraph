@@ -8,13 +8,12 @@ public class Node {
     private char letra;
     private Node left;
     private Node right;
-    private int passes;
 
     public Node() {
         this.left = null;
         this.right = null;
-        this.passes = 0;
     }
+
 
     public char getLetra() {
         return this.letra;
@@ -40,11 +39,5 @@ public class Node {
         return this.right;
     }
 
-    public int getPasses() {
-        return this.passes;
-    }
-
-    public void incrementPasses() {
-        this.passes ++;
-    }
 }
+
