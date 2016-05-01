@@ -7,9 +7,9 @@
 /build
 /captures
 
-build.gradle
+*.gradle
 
-gradle/wrapper
+gradle
 
 .idea/.name
 
@@ -20,3 +20,4 @@ gradle/wrapper
 .idea/gradle.xml
 
 .idea/.name
+.idea
