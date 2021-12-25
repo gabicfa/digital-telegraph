@@ -4,4 +4,4 @@ This project aims to develop an android app for communication in morse code thro
 
 To implement the translation of these sequences, the characters were stored in a binary tree, where going left means adding a short sign and going right means adding a long sign. To respect this order, a breadth search was implemented.
 
-<img src="img/img1.png" width="450" height="400">
+<img src="img/img1.png" width="500" height="250">
